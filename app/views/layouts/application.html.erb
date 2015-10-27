@@ -7,40 +7,15 @@
   <%= csrf_meta_tags %>
 <div id="user_nav">
   <% if usuario_signed_in? %>
-    Conectado como <%= current_usuario.email %>. ¿No eres tú?
-    <%= link_to "Desconectar", destroy_usuario_session_path, :method => :delete %>
+    Signed in as <%= current_usuario.email %>. Not you?
+    <%= link_to "Sign out", destroy_usuario_session_path, :method => :delete %>
   <% else %>
-    <%= link_to "Resgistrarse", new_usuario_registration_path %> or <%= link_to "Conectar", new_usuario_session_path %>
+    <%= link_to "Sign up", new_usuario_registration_path %> or <%= link_to "sign in", new_usuario_session_path %>
   <% end %>
 </div>
-<%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+<%= yield %>
 </head>
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand" href="#">Some Store</a>
-      <div class="nav-collapse">
-        <ul class="nav">
-          <li><%= link_to "Browse Products"%></li>
-          <li><%= link_to "Price List" %></li>
-          <li><%= link_to "Contact Us" %></li>
-          <li><%= link_to "Cart" %></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
 <body>
 
-<div class="container">
-  <%= yield %>
-</div>
 </body>
 </html>
